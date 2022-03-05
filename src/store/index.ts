@@ -15,6 +15,7 @@ export const useMainStore = defineStore("main", {
     return {
       count: 100,
       foo: "test",
+      arr: [1, 2, 3],
     };
   },
 
@@ -26,7 +27,17 @@ export const useMainStore = defineStore("main", {
   /**
    * 类似于组件的 methods ，封装业务逻辑，修改 state
    */
-  actions: {},
+  actions: {
+    //注意：不能使用箭头函数定义 action ，因为箭头函数绑定外部 this
+    changeState(num: number) {
+      this.count += num;
+      this.foo = "hello";
+      this.arr.push(4);
+
+      //   this.$patch({})
+      //   this.$patch(state => {})
+    },
+  },
 });
 //2、使用容器中的 state
 //3、修改 state

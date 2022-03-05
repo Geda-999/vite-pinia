@@ -2,6 +2,7 @@
   <div>
     <p>{{ mainStore.count }}</p>
     <p>{{ mainStore.foo }}</p>
+    <p>{{ mainStore.arr }}</p>
 
     <hr />
 
@@ -33,7 +34,29 @@ const { count, foo } = storeToRefs(mainStore);
 console.log(mainStore.count);
 
 const hcs = () => {
-  mainStore.count++;
+  //更改【一个数据】就用这个
+  //方式一：最简单的方式就是这样
+  //mainStore.count++;
+  //mainStore.foo="hello"
+
+  //一次性更改【多个数据】就用这个
+  //方法二：如果需要修改多个数据，建议使用 $patch 批量更新
+  //   mainStore.$patch({
+  //     count: mainStore.count + 1,
+  //     foo: "hello",
+  //     arr: [...mainStore.arr, 4],
+  //   });
+
+  //如果有【数组】就用这个就好啦
+  //方法三：更好的批量更新的方式：$patch 一个函数
+  //   mainStore.$patch((state) => {
+  //     state.count++;
+  //     state.foo = "hello";
+  //     state.arr.push(4);
+  //   });
+
+  //方法四：逻辑比较多的时候可以封装到 actions 做处理
+  mainStore.changeState(10)
 };
 </script>
 
