@@ -3,6 +3,9 @@
     <p>{{ mainStore.count }}</p>
     <p>{{ mainStore.foo }}</p>
     <p>{{ mainStore.arr }}</p>
+    <p>{{ mainStore.count10 }}</p>
+    <p>{{ mainStore.count10 }}</p>
+    <p>{{ mainStore.count10 }}</p>
 
     <hr />
 

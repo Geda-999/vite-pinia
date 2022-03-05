@@ -22,7 +22,19 @@ export const useMainStore = defineStore("main", {
   /**
    * 类似于组件的 computed ，用来封装计算属性，有缓存的功能
    */
-  getters: {},
+  getters: {
+    //函数接受一个可选参数：state 转态对象
+    // count10(state) {
+    //   console.log("count10 调用了");
+    //   return state.count + 10;
+    // },
+
+    //如果在getters 中使用了 this 则必须手动返回值得类型，否则类型推导不出来
+    count10(): number {
+      console.log("count10 调用了");
+      return this.count + 10;
+    },
+  },
 
   /**
    * 类似于组件的 methods ，封装业务逻辑，修改 state
