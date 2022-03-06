@@ -2,6 +2,27 @@
 
 This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
+## 🚀快速上手
+
+```bash
+# 克隆
+git clone https://github.com/Geda-999/vite-pinia.git
+
+# 切换目录
+cd vite-pinia
+
+# 安装依赖
+yarn
+# 或
+npm install
+
+# 本地启动
+yarn dev
+
+# 本地打包
+yarn build
+```
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
