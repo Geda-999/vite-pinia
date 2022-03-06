@@ -1,3 +1,4 @@
+import { buyProducts } from "./../api/shop";
 import { useProductsStore } from "./products";
 import { defineStore } from "pinia";
 import { IProduct } from "../api/shop";
@@ -12,6 +13,7 @@ export const useCartStore = defineStore("cart", {
   state: () => {
     return {
       cartProducts: [] as CartProduct[], //购物车商品列表
+      checkoutStatus: null as null | string,
     };
   },
 
@@ -23,6 +25,13 @@ export const useCartStore = defineStore("cart", {
       }, 0);
     },
   },
+
+  /**
+   * 如果是vuex
+   * 1、定义一推的mutation ，修改的 commit
+   * 2、还有一推的mutation types
+   * 3、action 调用 dispatch
+   */
 
   actions: {
     addProducToCart(product: IProduct) {
@@ -51,6 +60,14 @@ export const useCartStore = defineStore("cart", {
       // One Dark
       const productsStore = useProductsStore();
       productsStore.decrementProduct(product);
+    },
+
+    async checkout() {
+      const ret = await buyProducts();
+      this.checkoutStatus = ret ? "成功" : "失败";
+      if (ret) {
+        this.cartProducts = [];
+      }
     },
   },
 });

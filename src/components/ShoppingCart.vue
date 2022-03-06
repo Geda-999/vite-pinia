@@ -11,9 +11,9 @@
     </ul>
     <p>商品总价：{{ cartStore.totalPrice }}</p>
     <p>
-      <button>结算</button>
+      <button @click="cartStore.checkout">结算</button>
     </p>
-    <p>结算成功 / 失败.</p>
+    <p v-show="cartStore.checkoutStatus">结算{{cartStore.checkoutStatus}}.</p>
   </div>
 </template>
 
