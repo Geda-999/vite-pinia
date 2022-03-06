@@ -14,7 +14,15 @@ export const useCartStore = defineStore("cart", {
       cartProducts: [] as CartProduct[], //购物车商品列表
     };
   },
-  getters: {},
+
+  //商品总价
+  getters: {
+    totalPrice(state) {
+      return state.cartProducts.reduce((total, item) => {
+        return total + item.price * item.quantity;
+      }, 0);
+    },
+  },
 
   actions: {
     addProducToCart(product: IProduct) {
@@ -38,6 +46,9 @@ export const useCartStore = defineStore("cart", {
         });
       }
       //更新商品的库存
+      //不建议这么做，不要相信函数的参数
+      // product.inventory--;
+      // One Dark
       const productsStore = useProductsStore();
       productsStore.decrementProduct(product);
     },

@@ -9,7 +9,7 @@
         {{ item.title }} - {{ item.price }} X {{ item.quantity }}
       </li>
     </ul>
-    <p>商品总价：</p>
+    <p>商品总价：{{ cartStore.totalPrice }}</p>
     <p>
       <button>结算</button>
     </p>
